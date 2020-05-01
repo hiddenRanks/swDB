@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+# Fetch
+git switch master && git pull
+
+# Dependency install
+npm install
+
+# Run
+#npm run build && PORT=80 npm run start
+npm run build && npm run start
