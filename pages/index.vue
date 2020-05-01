@@ -34,23 +34,17 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import { mapMutations } from 'vuex';
 import Logo from '~/components/Logo.vue';
 
 export default Vue.extend({
-  data() {
-    return {
-      txt: ''
-    }
-  },
   components: {
     Logo
   },
   methods: {
-    async test() {
-      const r = await this.$axios.get('/api');
-      this.txt = r.data;
-      console.log(this.txt);
-    }
+    ...mapMutations({
+      test: 'test'
+    })
   }
 })
 </script>

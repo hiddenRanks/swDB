@@ -49,6 +49,7 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    proxy: true     // proxy 사용
   },
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.js' },
