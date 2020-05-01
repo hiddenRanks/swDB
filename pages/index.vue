@@ -25,6 +25,10 @@
         </a>
       </div>
     </div>
+
+    <b-btn @click="test">
+      test
+    </b-btn>
   </div>
 </template>
 
@@ -33,8 +37,20 @@ import Vue from 'vue';
 import Logo from '~/components/Logo.vue';
 
 export default Vue.extend({
+  data() {
+    return {
+      txt: ''
+    }
+  },
   components: {
     Logo
+  },
+  methods: {
+    async test() {
+      const r = await this.$axios.get('/api');
+      this.txt = r.data;
+      console.log(this.txt);
+    }
   }
 })
 </script>
