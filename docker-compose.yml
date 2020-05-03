@@ -1,11 +1,27 @@
 version: '3'
 
 services:
+  db:
+    image: mariadb:10.4
+    restart: always
+    container_name: swdb_db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD_FILE=./mysql-root
+      - TZ=Asia/Seoul
+    volumes:
+      - ./mysql-root:/mysql-root:ro
+
   swdb:
     build:
       context: .
       dockerfile: ./Dockerfile
+    restart: always
+    container_name: swdb_web
+    depends_on:
+      - db
     ports:
-      - "80:80"
+      - 80:80
     command:
       - bash Run
